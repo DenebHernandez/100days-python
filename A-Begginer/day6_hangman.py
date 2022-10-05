@@ -14,6 +14,7 @@ word_length = len(chosen_word)
 display = []
 for i in range(word_length):
     display += "_"
+wrong_guesses = []
 
 lives = 6
 end_of_game = False
@@ -24,6 +25,7 @@ while not end_of_game:
     print(stages[lives])
     print(current_display)
     print(f"You have {lives} lives left")
+    print(f"Wrong guesses: ({','.join(wrong_guesses)})")
     guess = input("Guess a letter: ").lower()
 
     # Check if guess was correct 
@@ -35,15 +37,14 @@ while not end_of_game:
         if current_display == chosen_word:
             end_of_game = True
     else:
+        wrong_guesses.append(guess)
         lives -= 1
         if lives == 0:
             end_of_game = True
-
 
 if current_display == chosen_word:
     print("You have won")
     print(f"The right word is {chosen_word}")
 else:
     print(stages[lives])
-    print(f"{''.join(display)}")
     print(f"You have lost, the right word was {chosen_word}")
