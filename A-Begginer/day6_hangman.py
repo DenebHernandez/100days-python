@@ -1,39 +1,49 @@
 # Hangman game
-from operator import le
 import random
-
-word_list= ["camel", "baboon", "guitar", "test", "castle", "jiraffe", "tree"]
+from day6_hangman_words import word_list
+from day6_hangman_art import stages, logo
 
 #Welcome message and pregame settings
-print("welcome to the hangman game")
+print(logo)
+print("Welcome to the hangman game")
 
 chosen_word = random.choice(word_list)
 word_length = len(chosen_word)
-print(chosen_word)
-
 
 # List for displaying the word and guessed characters
 display = []
 for i in range(word_length):
     display += "_"
 
-lives = 5
+lives = 6
+end_of_game = False
+current_display = ''.join(display)
 
-while lives > 0:
-    current_display = "".join(display)
-    if current_display != chosen_word:
+while not end_of_game:
 
-        print("".join(display))
-        guess = input("Guess a letter: ").lower()
+    print(stages[lives])
+    print(current_display)
+    print(f"You have {lives} lives left")
+    guess = input("Guess a letter: ").lower()
 
-        correct_letter = False
-
-        # Check if guess was correct 
+    # Check if guess was correct 
+    if guess in chosen_word:
         for i in range(word_length):
             if chosen_word[i] == guess:
                 display[i] = guess
-                correct_letter = True
-        
-        if not correct_letter:
-            lives -= 1
-        print(f"You have {lives} lives left")
+        current_display = ''.join(display)
+        if current_display == chosen_word:
+            end_of_game = True
+    else:
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+
+
+if current_display == chosen_word:
+    print("You have won")
+    print(f"The right word is {chosen_word}")
+else:
+    print(stages[lives])
+    print(f"{''.join(display)}")
+    print(f"You have lost, the right word was {chosen_word}")
