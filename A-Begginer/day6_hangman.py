@@ -2,7 +2,12 @@
 import random
 from day6_hangman_words import word_list
 from day6_hangman_art import stages, logo
+import os
 
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+print(os.name)
 #Welcome message and pregame settings
 print(logo)
 print("Welcome to the hangman game")
@@ -27,6 +32,7 @@ while not end_of_game:
     print(f"You have {lives} lives left")
     print(f"Wrong guesses: ({','.join(wrong_guesses)})")
     guess = input("Guess a letter: ").lower()
+    cls()
 
     # Check if guess was correct 
     if guess in chosen_word:
