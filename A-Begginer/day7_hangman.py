@@ -1,7 +1,7 @@
 # Hangman game
 import random
-from day6_hangman_words import word_list
-from day6_hangman_art import stages, logo
+from day7_hangman_words import word_list
+from day7_hangman_art import stages, logo
 import os
 
 def cls():
