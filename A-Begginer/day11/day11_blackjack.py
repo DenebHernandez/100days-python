@@ -1,5 +1,4 @@
 from functions import blackjack, cls
-from art import card, suits, flipped_card
 
 cls()
 
