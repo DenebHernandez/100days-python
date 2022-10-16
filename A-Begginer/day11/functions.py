@@ -1,6 +1,8 @@
 import os
 import random
 
+from art import card, suits, flipped_card
+
 card_values = {
     "Ace": {
         "symbol": 'A',
