@@ -5,8 +5,6 @@ from functions import insert_coins, user_input
 # Promt user by asking which coffee would they like to order
 order = user_input("order")
 
-# Turn off the machine if the user inputs "off"
-
 # Print report of current resources if user enters "report"
 
 # Check if resources are sufficient after getting an order and

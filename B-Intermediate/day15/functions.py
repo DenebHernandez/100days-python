@@ -1,6 +1,6 @@
 '''Functions module for the coffee machine replica'''
 
-from data import COINS, MENU
+from data import COINS, MENU, resources
 
 
 def insert_coins():
@@ -34,10 +34,6 @@ def user_input(prompt, coin=None):
     else it asks to try again
     '''
 
-    # Checks if at any point the user inputs the word "off" so the
-    # coffee machine can be turned off
-
-
     # For every coin type asks for amount of coins,
     # checks if user inputs a digit to convert into an int
     if prompt == "coins":
@@ -54,10 +50,22 @@ def user_input(prompt, coin=None):
     if prompt == "order":
         while True:
             order = input("What would you like? (espresso/latte/cappuccino): ")
-            if order in MENU:
+            order = order.lower()
+            if order == "off" or order in MENU:
                 break
             print(f"{order} is not part of the menu")
         return order
 
 
-insert_coins()
+def report(available_resources:dict):
+    '''Returns a report of available resources'''
+    for resource in available_resources.items():
+        if resource[0] == "coffee":
+            print(f"{resource[0]}: {resource[1]}g")
+        elif resource[0] == "money":
+            print(f"{resource[0]}: ${resource[1]}")
+        else:
+            print(f"{resource[0]}: {resource[1]}ml")
+
+
+report(resources)
