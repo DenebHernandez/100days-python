@@ -47,10 +47,10 @@ class Ball(Turtle):
         if self.xcor() > 400:
             self.setpos(0, 0)
             self.go_right = not self.go_right
-            return "r"
+            return "l"
         elif self.xcor() < -400:
             self.setpos(0, 0)
             self.go_right = not self.go_right
-            return "l"
+            return "r"
         else:
             return ""

@@ -30,6 +30,7 @@ screen.onkeypress(fun=user_paddle.move_down, key="s")
 screen.onkeypress(fun=computer_paddle.move_up, key="Up")
 screen.onkeypress(fun=computer_paddle.move_down, key="Down")
 
+time.sleep(3)
 while game_is_on:
     screen.update()
     ball.wall_collision()
