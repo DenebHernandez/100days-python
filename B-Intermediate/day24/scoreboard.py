@@ -1,5 +1,4 @@
 '''Module for the scoreboard class'''
-
 from turtle import Turtle
 
 ALIGNMENT = "center"
@@ -12,12 +11,18 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.high_score = 0
         self.hideturtle()
         self.penup()
         self.color("white")
         self.sety(270)
+        self.set_highscore()
         self.update_scoreboard()
+
+
+    def set_highscore(self):
+        with open(file="B-Intermediate/day24/data.txt") as file:
+            content = file.read()
+            self.high_score = int(content)
 
 
     def update_scoreboard(self):
@@ -32,7 +37,9 @@ class Scoreboard(Turtle):
 
     def reset(self):
         if self.score > self.high_score:
-            self.high_score = self.score
+            with open(file="B-Intermediate/day24/data.txt", mode="w") as file:
+                file.write(f"{self.score}")
+            self.set_highscore()
         self.score = 0
         self.update_scoreboard()
 
