@@ -3,7 +3,8 @@ import math
 import tkinter as tk
 
 main_folder = os.getcwd()
-cwd = f"{main_folder}\B-Intermediate\day28"
+# cwd = f"{main_folder}\B-Intermediate\day28"
+cwd = f"{main_folder}"
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
