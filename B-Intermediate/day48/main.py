@@ -1,1 +1,0 @@
-chrome_driver_path = "C:\Users\deneb\code\chromedriver.exe"
